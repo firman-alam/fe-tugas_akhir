@@ -7,10 +7,22 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      fontFamily: {
+        satoshi: ['Satoshi', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+        mabry_pro: ['Mabry Pro', 'sans-serif'],
+      },
+      colors: {
+        'primary-orange': '#FF5722',
+        'green-fir': '#23A094',
+        'orange-fir': '#FFC900',
+        'yellow-fir': '#F1F333',
+        'pink-fir': '#FF90E8',
+        'paleblue-fir': '#90A8ED',
+        'red-fir': '#E2242F',
+      },
+      textColor: {
+        black: '#000000',
       },
     },
   },

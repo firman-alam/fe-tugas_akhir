@@ -1,27 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('../../public/font/mabry/stylesheet.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* Custom Hidden Scroll Button */
+.hidden-scroll::-webkit-scrollbar {
+  width: 0.4rem;
+  height: 0.4rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.hidden-scroll::-webkit-scrollbar-thumb {
+  background-color: transparent;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.hidden-scroll::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Thin Scroll Button */
+.thin-scroll::-webkit-scrollbar {
+  width: 0.2rem;
+  height: 0.2rem;
+}
+
+.thin-scroll::-webkit-scrollbar-thumb {
+  background-color: #a0aec0;
+  border-radius: 0.1rem;
+}
+
+.thin-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #718096;
+}
+
+.thin-scroll::-webkit-scrollbar-track {
+  background-color: #edf2f7;
+  border-radius: 0.1rem;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Tailwind Styles */
+
+.app {
+  @apply relative z-10 flex justify-start items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+}
+
+.head_text {
+  @apply mt-5 text-4xl font-mabry_pro font-bold leading-[1.15] text-black sm:text-6xl;
+}
+
+.logo_text {
+  @apply max-sm:hidden font-mabry_pro font-semibold text-2xl text-black tracking-wide;
+}
+
+.outline_btn {
+  @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
+}
+
+.black_btn {
+  @apply rounded border-black bg-black py-1.5 px-5 text-white transition-all border-2  text-center text-sm flex items-center justify-center;
+}
+
+.white_btn {
+  @apply rounded 
+  border-black 
+  bg-white 
+  py-1.5 
+  px-5 
+  text-black 
+  font-medium 
+  transition-all 
+  border-2 
+  hover:bg-black 
+  hover:border-2 
+  hover:text-white 
+  text-center 
+  text-sm flex 
+  items-center 
+  justify-center
+  shadow-lg; /* Or use the desired shadow intensity class */
+
+  /* Custom box shadow */
+  --tw-shadow: -3px 4px 0px 1px rgba(0, 0, 0, 1);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-box {
+  @apply rounded shadow-lg; /* Or use the desired shadow intensity class */
+
+  /* Custom box shadow */
+  --tw-shadow: -3px 4px 0px 1px rgba(0, 0, 0, 1);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.green_btn {
+  @apply rounded 
+    border-black 
+    bg-green-fir 
+    py-1.5 
+    px-5 
+    text-black 
+    transition-all 
+    shadow-lg 
+    hover:bg-white 
+    hover:border-2 
+    hover:text-black 
+    text-center 
+    text-sm 
+    flex 
+    items-center 
+    justify-center;
+}
+
+.pink_btn {
+  @apply rounded border-black bg-pink-fir py-1.5 px-5 text-black transition-all border-2 hover:bg-white hover:border-2 hover:text-black text-center text-sm flex items-center justify-center;
+}
+
+.blue_btn {
+  @apply rounded border-black bg-paleblue-fir py-1.5 px-5 text-black font-medium transition-all border-2 hover:bg-white hover:border-2 hover:text-black text-center text-sm flex items-center justify-center;
+}
+
+.red_btn {
+  @apply rounded border-black bg-red-fir py-1.5 px-5 text-black font-medium transition-all border-2 hover:bg-white hover:border-2 hover:text-black text-center text-sm flex items-center justify-center;
+}
+
+.yellow_btn {
+  @apply rounded border-black bg-yellow-fir py-1.5 px-5 text-black font-medium transition-all border-2 hover:bg-white hover:border-2 hover:text-black text-center text-sm flex items-center justify-center;
+}
+
+.orange_btn {
+  @apply rounded border-black bg-orange-fir py-1.5 px-5 text-black font-medium transition-all border-2 hover:bg-white hover:border-2 hover:text-black text-center text-sm flex items-center justify-center;
+}
+
+.orange_gradient {
+  @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+}
+
+.green_gradient {
+  @apply bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent;
+}
+
+.blue_gradient {
+  @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
+}
+
+.desc_text {
+  @apply mt-5 text-lg text-gray-600 sm:text-xl max-w-2xl font-mabry_pro;
+}
+
+.red_header {
+  @apply w-1/6 h-screen border-r-2 border-black p-4 flex bg-red-fir items-center justify-center;
+}
+
+.yellow_header {
+  @apply w-1/6 h-screen border-r-2 border-black p-4 flex bg-yellow-fir items-center justify-center;
+}
+
+.green_header {
+  @apply w-1/6 h-screen border-r-2 border-black p-4 flex bg-green-fir items-center justify-center;
+}
+
+.pink_header {
+  @apply w-1/6 h-screen border-r-2 border-black p-4 flex bg-pink-fir items-center justify-center;
+}
+
+.blue_header {
+  @apply w-1/6 h-screen border-r-2 border-black p-4 flex bg-paleblue-fir items-center justify-center;
+}
+
+.orange_header {
+  @apply w-1/6 h-screen border-r-2 border-black p-4 flex bg-orange-fir items-center justify-center;
 }
