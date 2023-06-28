@@ -54,14 +54,14 @@ const Nav = () => {
               Dataset
             </p>
           </Link>
-          <Link href='/labelling' className='flex items-center'>
-            <p className='text-large font-semibold hover:border-b hover:border-black'>
-              Labelling
-            </p>
-          </Link>
           <Link href='/preprocessing' className='flex items-center'>
             <p className='text-large font-semibold hover:border-b hover:border-black'>
               Preprocessing
+            </p>
+          </Link>
+          <Link href='/labelling' className='flex items-center'>
+            <p className='text-large font-semibold hover:border-b hover:border-black'>
+              Labelling
             </p>
           </Link>
           <Link href='/testing' className='flex items-center'>

@@ -3,7 +3,10 @@
 import { AuthContext } from '../utils/AuthContext'
 import { useContext, useEffect, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
-import { useGetDatasetLabelledQuery } from '@/lib/redux/services/tugasAkhirApi'
+import {
+  useGetDatasetLabelledQuery,
+  useLazyRunLabellingQuery,
+} from '@/lib/redux/services/tugasAkhirApi'
 import { MaterialReactTable, type MRT_ColumnDef } from 'material-react-table'
 import { DatasetLabelled } from '@/types/Dataset'
 
@@ -12,14 +15,25 @@ const page = () => {
   const { getUser } = useContext(AuthContext)
   const user = getUser()
 
-  const { data, isLoading } = useGetDatasetLabelledQuery(null)
+  const [runLabelling] = useLazyRunLabellingQuery()
+  const { data, isLoading, refetch } = useGetDatasetLabelledQuery(null)
 
   useEffect(() => {
-    if (!user) {
-      // Redirect the user to the login page.
-      router.push('/')
+    const interval = setInterval(() => {
+      refetch()
+    }, 60000)
+
+    return () => {
+      clearInterval(interval)
     }
-  }, [user])
+  }, [refetch])
+
+  // useEffect(() => {
+  //   if (!user) {
+  //     // Redirect the user to the login page.
+  //     router.push('/')
+  //   }
+  // }, [user])
 
   const columns = useMemo<MRT_ColumnDef<DatasetLabelled>[]>(
     () => [
@@ -74,7 +88,12 @@ const page = () => {
                 </div>
               </section>
               <section className='p-4 w-5/6 h-screen overflow-scroll thin-scroll overflow-y-scroll'>
-                <button className='white_btn mb-4'>Start Labelling</button>
+                <button
+                  className='white_btn mb-4'
+                  onClick={() => runLabelling()}
+                >
+                  Start Labelling
+                </button>
                 {data ? (
                   <MaterialReactTable
                     columns={columns}

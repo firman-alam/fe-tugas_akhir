@@ -39,7 +39,7 @@ const page = () => {
 
       uploadFile(formData)
         .unwrap()
-        .then((data) => {
+        .then((data: string) => {
           console.log(data)
         })
         .catch((error) => {

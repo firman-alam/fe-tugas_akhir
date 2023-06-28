@@ -130,7 +130,7 @@ const page = () => {
         <div className='border-r-2 border-black h-screen' />
         <div className='w-1/2 text-center bg-yellow-fir flex flex-col justify-center'>
           <p className='text-center font-medium mb-5 text-3xl font-mabry_pro p-6'>
-            "One Step Closer"
+            "K-Nearest Neighbors"
           </p>
         </div>
       </section>
@@ -142,7 +142,7 @@ const page = () => {
       <section className='flex'>
         <div className='w-1/2 text-center bg-paleblue-fir flex flex-col justify-center'>
           <p className='text-center font-medium mb-5 text-3xl font-mabry_pro p-6'>
-            "A Hunger In Your Haunt"
+            "Lexicon"
           </p>
         </div>
         <div className='border-r-2 border-black h-screen' />

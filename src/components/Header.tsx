@@ -2,7 +2,12 @@
 
 import React from 'react'
 
-const Header = ({ title, bgColor }) => {
+type NavbarProps = {
+  title: string
+  bgColor: string
+}
+
+const Header = ({ title, bgColor }: NavbarProps) => {
   return (
     <section
       className={`w-1/4 h-screen border-r-2 border-black p-4 flex ${bgColor} items-center justify-center`}
