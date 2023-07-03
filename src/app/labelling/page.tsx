@@ -10,18 +10,18 @@ import {
 import { MaterialReactTable, type MRT_ColumnDef } from 'material-react-table'
 import { DatasetLabelled } from '@/types/Dataset'
 
-const page = () => {
+const Page = () => {
   const router = useRouter()
   const { getUser } = useContext(AuthContext)
   const user = getUser()
 
-  const [runLabelling] = useLazyRunLabellingQuery()
+  const [runLabelling, { isLoading: loadLabel }] = useLazyRunLabellingQuery()
   const { data, isLoading, refetch } = useGetDatasetLabelledQuery(null)
 
   useEffect(() => {
     const interval = setInterval(() => {
       refetch()
-    }, 60000)
+    }, 6000)
 
     return () => {
       clearInterval(interval)
@@ -65,6 +65,10 @@ const page = () => {
     ],
     []
   )
+
+  if (isLoading || loadLabel) {
+    return <p className='mt-2'>Loading...</p>
+  }
 
   return (
     <main className='flex flex-row'>
@@ -134,4 +138,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

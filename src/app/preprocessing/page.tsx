@@ -11,7 +11,7 @@ import {
   useLazyGetPreprocessingQuery,
 } from '@/lib/redux/services/tugasAkhirApi'
 
-const page = () => {
+const Page = () => {
   const router = useRouter()
   const { getUser } = useContext(AuthContext)
   const user = getUser()
@@ -24,8 +24,6 @@ const page = () => {
     getPreprocessing,
     { data: dataPreprocessing, isLoading: loadPreprocessing },
   ] = useLazyGetPreprocessingQuery(undefined)
-
-  console.log(dataPreprocessing)
 
   const handleTabClick = (tabIndex: any) => {
     setActiveTab(tabIndex)
@@ -296,7 +294,7 @@ const page = () => {
             {/* Tables */}
             {process &&
               (loadPreprocessing ? (
-                <p>Loading...</p>
+                <p className='mt-4'>Loading...</p>
               ) : (
                 <div className='bg-white p-4 rounded-b-md'>
                   {activeTab === 1 && dataPreprocessing && (
@@ -488,4 +486,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

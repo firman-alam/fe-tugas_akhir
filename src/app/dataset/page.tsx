@@ -10,7 +10,7 @@ import {
 import { MaterialReactTable, type MRT_ColumnDef } from 'material-react-table'
 import { Dataset } from '@/types/Dataset'
 
-const page = () => {
+const Page = () => {
   const router = useRouter()
   const { getUser } = useContext(AuthContext)
   const user = getUser()
@@ -42,7 +42,7 @@ const page = () => {
         .then((data: string) => {
           console.log(data)
         })
-        .catch((error) => {
+        .catch((error: string) => {
           console.log(error)
         })
     }
@@ -105,7 +105,7 @@ const page = () => {
               <section className='px-4 py-6 w-5/6 h-screen overflow-scroll thin-scroll overflow-y-scroll'>
                 <div>
                   <button
-                    className='white_btn mb-4'
+                    className='white_btn mb-4 p-4'
                     type='button'
                     onClick={handleButtonClick}
                   >
@@ -161,4 +161,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

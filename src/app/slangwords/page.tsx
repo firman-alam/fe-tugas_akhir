@@ -32,7 +32,7 @@ interface DataDelete {
   id: number
 }
 
-const page = () => {
+const Page = () => {
   const router = useRouter()
   const { getUser } = useContext(AuthContext)
   const { register, handleSubmit, reset } = useForm()
@@ -489,4 +489,4 @@ const EditModal = ({
   )
 }
 
-export default page
+export default Page

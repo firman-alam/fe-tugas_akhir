@@ -1,12 +1,22 @@
-export type DataLatih = {
-  id: number
-  raw_tweet: string
-  label: string
-}
+type ConfusionMatrix = [[number, number], [number, number]];
 
-export type DataUji = {
-  id: number
-  raw_tweet: string
-  label_aktual: string
-  label_prediksi: string
-}
+type TestingData = {
+  tweet: string[];
+  actual_label: string[];
+  predicted_label: string[];
+};
+
+type TrainingData = {
+  tweet: string[];
+  label: string[];
+};
+
+type ResponseTesting = {
+  accuracy: number;
+  confusion_matrix: ConfusionMatrix;
+  precision: number;
+  recall: number;
+  f1_score: number;
+  training_data: TrainingData;
+  testing_data: TestingData;
+};

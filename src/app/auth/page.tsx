@@ -9,7 +9,7 @@ import {
   useSignUpMutation,
 } from '@/lib/redux/services/tugasAkhirApi'
 
-const page = () => {
+const Page = () => {
   const router = useRouter()
   const [user, setUser] = useState(false)
   const [consoleMessage, setConsoleMessage] = useState('')
@@ -28,9 +28,9 @@ const page = () => {
     shouldUseNativeValidation: true,
   })
 
-  const onSubmitSignUp = async (data) => {
+  const onSubmitSignUp = async (data: any) => {
     signUp(data)
-      .then((data) => {
+      .then((data: any) => {
         if (data.status === true) {
           setConsoleMessage('User registered successfully')
           reset()
@@ -43,15 +43,15 @@ const page = () => {
           setConsoleMessage('Failed to register')
         }
       })
-      .catch((error) => {
+      .catch((error: string) => {
         reset()
-        setConsoleMessage('Something went wrong', error)
+        setConsoleMessage('Something went wrong')
       })
   }
 
-  const onSubmitSignIn = async (data) => {
+  const onSubmitSignIn = async (data: any) => {
     signIn(data)
-      .then((data) => {
+      .then((data: any) => {
         if (data.data.status === true) {
           setConsoleMessage(`Welcome ${data.data.data.username}`)
           reset()
@@ -62,9 +62,9 @@ const page = () => {
           setConsoleMessage('Failed to find the account')
         }
       })
-      .catch((error) => {
+      .catch((error: string) => {
         reset()
-        setConsoleMessage('Something went wrong', error)
+        setConsoleMessage('Something went wrong')
       })
   }
 
@@ -87,7 +87,6 @@ const page = () => {
               <input
                 type='text'
                 id='username'
-                name='username'
                 className='w-full px-4 py-2 border-2 border-black rounded-md'
                 {...register('username', {
                   required: 'Please enter a valid username',
@@ -105,7 +104,6 @@ const page = () => {
               <input
                 type='password'
                 id='password'
-                name='password'
                 className='w-full px-4 py-2 border-2 border-black rounded-md'
                 {...register('password', { required: 'Password is required' })}
               />
@@ -130,7 +128,7 @@ const page = () => {
         <div className='border-r-2 border-black h-screen' />
         <div className='w-1/2 text-center bg-yellow-fir flex flex-col justify-center'>
           <p className='text-center font-medium mb-5 text-3xl font-mabry_pro p-6'>
-            "K-Nearest Neighbors"
+            &quot;K-Nearest Neighbors&ldquo;
           </p>
         </div>
       </section>
@@ -142,7 +140,7 @@ const page = () => {
       <section className='flex'>
         <div className='w-1/2 text-center bg-paleblue-fir flex flex-col justify-center'>
           <p className='text-center font-medium mb-5 text-3xl font-mabry_pro p-6'>
-            "Lexicon"
+            &quot;Lexicon&ldquo;
           </p>
         </div>
         <div className='border-r-2 border-black h-screen' />
@@ -162,7 +160,6 @@ const page = () => {
               <input
                 type='text'
                 id='username'
-                name='username'
                 className='w-full px-4 py-2 border-2 border-black rounded-md'
                 {...register('username', {
                   required: 'Please enter a valid username',
@@ -180,7 +177,6 @@ const page = () => {
               <input
                 type='password'
                 id='password'
-                name='password'
                 className='w-full px-4 py-2 border-2 border-black rounded-md'
                 {...register('password', { required: 'Password is required' })}
               />
@@ -210,4 +206,4 @@ const page = () => {
   return <div>{user ? <SignIn /> : <SignUp />}</div>
 }
 
-export default page
+export default Page
