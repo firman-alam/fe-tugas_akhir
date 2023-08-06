@@ -49,7 +49,11 @@ const Page = () => {
   const precision = data?.precision
   const recall = data?.recall
 
-  console.log(data)
+  useEffect(() => {
+    if (accuracy !== undefined) {
+      localStorage.setItem('accuracy', accuracy.toString())
+    }
+  }, [accuracy])
 
   const handleTabClick = (tabIndex: any) => {
     setActiveTab(tabIndex)

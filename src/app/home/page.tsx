@@ -1,20 +1,36 @@
 'use client'
 
 import { AuthContext } from '../utils/AuthContext'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useGetDatasetTotalQuery } from '@/lib/redux/services/tugasAkhirApi'
 
 const Page = () => {
   const router = useRouter()
   const { getUser } = useContext(AuthContext)
   const user = getUser()
+  const [accuracy, setAccuracy] = useState<string | null>()
+  const { data } = useGetDatasetTotalQuery()
 
   useEffect(() => {
-    if (!user) {
-      // Redirect the user to the login page.
-      router.push('/')
-    }
-  }, [user])
+    const savedAccuracy = localStorage.getItem('accuracy')
+    const parsedAccuracy =
+      savedAccuracy !== null ? parseFloat(savedAccuracy) : 0
+    const accuracyPercentage = parsedAccuracy * 100
+    console.log(parsedAccuracy)
+
+    setAccuracy(accuracyPercentage.toString())
+  }, [])
+
+  // If the accuracy value is not found in localStorage or is null, set it to 0
+  // const accuracy = savedAccuracy !== null ? parseFloat(savedAccuracy) : 0
+
+  // useEffect(() => {
+  //   if (!user) {
+  //     // Redirect the user to the login page.
+  //     router.push('/')
+  //   }
+  // }, [user])
 
   return (
     <main className='flex flex-row'>
@@ -44,11 +60,11 @@ const Page = () => {
             <div className='flex gap-4 p4 m-8 justify-between'>
               <div className='border-black border-2 p-4 shadow-box w-full flex flex-col gap-6 bg-paleblue-fir'>
                 <p className='font-bold tx-lg'>Jumlah Dataset</p>
-                <p className='font-medium'>1500</p>
+                <p className='font-medium'>{data?.count}</p>
               </div>
               <div className='border-black border-2 p-4 shadow-box w-full flex flex-col gap-6 bg-paleblue-fir'>
                 <p className='font-bold tx-lg'>Total Akurasi</p>
-                <p className='font-medium'>80%</p>
+                <p className='font-medium'>{accuracy}%</p>
               </div>
             </div>
           </section>

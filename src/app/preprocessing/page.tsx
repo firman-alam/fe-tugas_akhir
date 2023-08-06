@@ -79,7 +79,7 @@ const Page = () => {
   const columnsCleansing = useMemo<MRT_ColumnDef<any>[]>(
     () => [
       {
-        accessorKey: 'awal_data',
+        accessorKey: 'caseFolding_data',
         header: 'Tweet Sebelum',
         size: 300,
       },
@@ -95,7 +95,7 @@ const Page = () => {
   const columnsNormalizing = useMemo<MRT_ColumnDef<any>[]>(
     () => [
       {
-        accessorKey: 'awal_data',
+        accessorKey: 'cleansing_data',
         header: 'Tweet Sebelum',
         size: 300,
       },
@@ -111,7 +111,7 @@ const Page = () => {
   const columnsStopword = useMemo<MRT_ColumnDef<any>[]>(
     () => [
       {
-        accessorKey: 'awal_data',
+        accessorKey: 'normalize_data',
         header: 'Tweet Sebelum',
         size: 300,
       },
@@ -127,7 +127,7 @@ const Page = () => {
   const columnsStemming = useMemo<MRT_ColumnDef<any>[]>(
     () => [
       {
-        accessorKey: 'awal_data',
+        accessorKey: 'stopwordsRemoval_data',
         header: 'Tweet Sebelum',
         size: 300,
       },
@@ -143,7 +143,7 @@ const Page = () => {
   const columnsTokenizing = useMemo<MRT_ColumnDef<any>[]>(
     () => [
       {
-        accessorKey: 'awal_data',
+        accessorKey: 'stemming_data',
         header: 'Tweet Sebelum',
         size: 300,
       },

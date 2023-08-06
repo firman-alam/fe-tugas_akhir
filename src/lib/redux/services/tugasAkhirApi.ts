@@ -27,6 +27,10 @@ export const tugasAkhirApi: any = createApi({
       query: () => 'dataset',
       providesTags: ['Dataset'],
     }),
+    getDatasetTotal: builder.query({
+      query: () => 'dataset/total',
+      providesTags: ['Dataset'],
+    }),
     importDataset: builder.mutation({
       query: (file) => ({
         url: 'dataset',
@@ -117,6 +121,14 @@ export const tugasAkhirApi: any = createApi({
       query: () => 'labelling',
       providesTags: ['Label'],
     }),
+    updateLabel: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `label/update/${id}`,
+        method: 'PUT',
+        body: { ...data },
+      }),
+      invalidatesTags: [{ type: 'Label' }],
+    }),
     doTesting: builder.mutation({
       query: ({ data }) => ({
         url: `testing`,
@@ -143,6 +155,7 @@ export const {
   useGetDatasetQuery,
   useImportDatasetMutation,
   useGetDatasetLabelledQuery,
+  useGetDatasetTotalQuery,
   useGetSlangwordsQuery,
   useGetStopwordsQuery,
   useImportSlangwordMutation,
@@ -156,5 +169,6 @@ export const {
   useUpdateStopwordMutation,
   useDeleteStopwordMutation,
   useLazyRunLabellingQuery,
+  useUpdateLabelMutation,
   useDoTestingMutation,
 } = tugasAkhirApi

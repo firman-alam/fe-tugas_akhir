@@ -44,8 +44,8 @@ const Page = () => {
   const [selectedFile, setSelectedFile] = useState(null)
   const { data, isLoading } = useGetSlangwordsQuery(null)
   const [isOpenAdd, setIsOpenAdd] = useState<boolean>(false)
-  const [isOpenEdit, setIsOpenEdit] = useState<boolean>(false)
   const [isOpenDelete, setIsOpenDelete] = useState<boolean>(false)
+  const [isOpenEdit, setIsOpenEdit] = useState<boolean>(false)
   const [dataEdit, setDataEdit] = useState<DataEdit | null>(null)
   const [dataDelete, setDataDelete] = useState<DataDelete | null>(null)
 

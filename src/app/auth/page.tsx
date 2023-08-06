@@ -30,6 +30,7 @@ const Page = () => {
 
   const onSubmitSignUp = async (data: any) => {
     signUp(data)
+      .unwrap()
       .then((data: any) => {
         if (data.status === true) {
           setConsoleMessage('User registered successfully')
@@ -37,6 +38,7 @@ const Page = () => {
 
           setTimeout(() => {
             setUser(true)
+            setConsoleMessage('')
           }, 3000)
         } else if (data.status === false) {
           reset()
@@ -51,13 +53,14 @@ const Page = () => {
 
   const onSubmitSignIn = async (data: any) => {
     signIn(data)
+      .unwrap()
       .then((data: any) => {
-        if (data.data.status === true) {
-          setConsoleMessage(`Welcome ${data.data.data.username}`)
+        if (data.status === true) {
+          setConsoleMessage(`Welcome ${data.data.username}`)
           reset()
-          signin(data.data.data)
+          signin(data.data)
           router.push('/home')
-        } else if (data.data.status === false) {
+        } else if (data.status === false) {
           reset()
           setConsoleMessage('Failed to find the account')
         }
